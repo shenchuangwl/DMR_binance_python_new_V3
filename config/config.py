@@ -1,6 +1,6 @@
 # Binance 真实网络 API 配置
-API_KEY = 'SOj718zGhJsMIYdXpwlNnDQWIZckZVn0qvosOUmjQ3yK9bhvqhFVmXlc81omq9yT'
-API_SECRET = 'SMZ9Ta9V4TPpPJQYVmsJQaRulzsiPr0wT3ITQzusP9OhNQv8DCW0wr2T7MOrOXpu'
+API_KEY = ''
+API_SECRET = ''
 
 # === 全局核心参数（唯一数据源）===
 # 交易币种参数 - 全局统一配置
