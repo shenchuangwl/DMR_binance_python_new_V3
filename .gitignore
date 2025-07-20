@@ -1,0 +1,479 @@
+# ============================================================================
+# Python量化交易系统 .gitignore 配置文件
+# 项目：DMR四象限策略交易系统
+# 版本：2.0 专业版
+# ============================================================================
+
+# ============================================================================
+# Python 核心文件排除
+# 说明：Python运行时自动生成的文件，包含字节码、缓存、构建产物等
+# 必要性：这些文件会频繁变化且可以重新生成，不应纳入版本控制
+# ============================================================================
+__pycache__/                    # Python字节码缓存目录
+*.pyc                          # 编译后的Python字节码文件
+*.pyo                          # 优化的Python字节码文件
+*.pyd                          # Python动态链接库（Windows）
+*.so                           # 共享对象文件（Linux/Mac）
+.Python                        # Python安装标记文件
+build/                         # 构建输出目录
+develop-eggs/                  # 开发模式egg文件
+dist/                          # 分发包目录
+downloads/                     # 下载缓存目录
+eggs/                          # Egg包目录
+.eggs/                         # Egg信息目录
+lib/                           # 库文件目录
+lib64/                         # 64位库文件目录
+parts/                         # buildout parts目录
+sdist/                         # 源码分发目录
+var/                           # 变量数据目录
+wheels/                        # Wheel包缓存
+*.egg-info/                    # 包元数据目录
+.installed.cfg                 # buildout安装配置
+*.egg                          # Egg包文件
+MANIFEST                       # 清单文件
+
+# ============================================================================
+# Python 虚拟环境
+# 说明：各种Python虚拟环境工具创建的环境目录
+# 必要性：虚拟环境包含大量第三方包，应该通过requirements.txt管理
+# ============================================================================
+venv/                          # 标准venv虚拟环境
+.venv/                         # 隐藏的venv环境
+env/                           # 通用环境目录名
+ENV/                           # 大写环境目录名
+env.bak/                       # 环境备份目录
+venv.bak/                      # venv备份目录
+.conda/                        # Conda用户配置
+conda-meta/                    # Conda元数据
+
+# ============================================================================
+# IDE 和编辑器配置文件
+# 说明：各种开发工具的配置文件和临时文件
+# 必要性：这些文件是个人开发环境配置，不应影响其他开发者
+# ============================================================================
+.idea/                         # JetBrains IDE配置目录
+.vscode/                       # Visual Studio Code配置
+*.swp                          # Vim交换文件
+*.swo                          # Vim交换文件（备用）
+*~                             # 编辑器备份文件
+.DS_Store                      # macOS文件夹显示属性
+Thumbs.db                      # Windows缩略图缓存
+*.sublime-project              # Sublime Text项目文件
+*.sublime-workspace            # Sublime Text工作区文件
+
+# ============================================================================
+# Jupyter Notebook
+# 说明：Jupyter相关的检查点文件
+# 必要性：检查点文件是自动保存功能产生的，不需要版本控制
+# ============================================================================
+.ipynb_checkpoints             # Jupyter检查点目录
+
+# ============================================================================
+# 日志文件系统 - 交易系统核心配置
+# 说明：交易系统运行产生的各类日志文件
+# 必要性：日志文件通常很大且频繁变化，包含运行时信息而非源码
+# 交易系统特有：包含策略执行日志、交易记录等敏感运营数据
+# ============================================================================
+logs/                          # 通用日志目录
+*.log                          # 所有日志文件
+trading_log.txt                # 主交易日志文件
+testnet_trading_log.txt        # 测试网交易日志
+short_term_strategy.log        # 短期策略执行日志
+long_term_strategy.log         # 长期策略执行日志
+dmr_strategy.log               # DMR策略专用日志
+execution_logs/                # 订单执行日志目录
+monitoring_logs/               # 监控系统日志目录
+risk_logs/                     # 风险管理日志目录
+*.log.*                        # 轮转日志文件
+
+# ============================================================================
+# 数据文件管理 - 智能排除策略
+# 说明：排除数据文件但保留代码结构和文档
+# 必要性：市场数据文件通常很大，但需要保持目录结构完整性
+# 交易系统特有：包含K线数据、指标计算结果、回测数据等
+# ============================================================================
+data/*.csv                     # 根数据目录CSV文件
+data/*.json                    # 根数据目录JSON文件
+data/*.xlsx                    # 根数据目录Excel文件
+data/*.db                      # 根数据目录数据库文件
+data/*.sqlite                  # 根数据目录SQLite文件
+data/*.sqlite3                 # 根数据目录SQLite3文件
+data/long_term/*.csv           # 长期策略数据文件
+data/long_term/*.json          # 长期策略JSON数据
+data/short_term/*.csv          # 短期策略数据文件
+data/short_term/*.json         # 短期策略JSON数据
+data/market_data/*.csv         # 市场数据CSV文件
+data/market_data/*.json        # 市场数据JSON文件
+data/backtest/*.csv            # 回测数据文件
+data/backtest/*.json           # 回测结果文件
+data/indicators/*.csv          # 技术指标数据
+data/indicators/*.json         # 技术指标计算结果
+
+# 保留重要的代码和文档文件
+!data/*.py                     # 保留数据处理脚本
+!data/*/*.py                   # 保留子目录中的Python文件
+!data/README.md                # 保留数据目录说明文档
+!data/*/README.md              # 保留子目录说明文档
+!data/schema.sql               # 保留数据库架构文件
+!data/*/schema.sql             # 保留子目录数据库架构
+
+# ============================================================================
+# 分析报告和输出文件
+# 说明：系统生成的分析报告和输出文件
+# 必要性：这些是运行时产生的结果文件，不是源码的一部分
+# 交易系统特有：包含策略分析报告、性能评估、风险报告等
+# ============================================================================
+analysis_reports/              # 分析报告目录
+performance_reports/           # 性能报告目录
+risk_reports/                  # 风险评估报告目录
+backtest_reports/              # 回测报告目录
+*.csv                          # 通用CSV输出文件
+*.xlsx                         # 通用Excel输出文件
+*.json                         # 通用JSON输出文件（在特定目录外）
+
+# 保留重要的配置和文档文件
+!requirements.txt              # 保留依赖配置文件
+!README*.txt                   # 保留说明文档
+!README*.md                    # 保留Markdown文档
+!config/*.json                 # 保留配置目录中的JSON文件
+!docs/*.json                   # 保留文档目录中的JSON文件
+
+# ============================================================================
+# 敏感配置文件 - 安全核心配置
+# 说明：包含真实API密钥和敏感信息的配置文件
+# 必要性：防止API密钥等敏感信息泄露到版本控制系统
+# 交易系统特有：包含交易所API密钥、账户信息等关键安全数据
+# ============================================================================
+config/config.py               # 主配置文件（包含真实API密钥）
+config/config_1.py             # 备用配置文件
+config/config_copy.py          # 配置文件副本
+config/testnet_config.py       # 测试网配置（可能包含测试密钥）
+config/production_config.py    # 生产环境配置
+config/local_config.py         # 本地开发配置
+config/personal_config.py      # 个人配置文件
+config/live_config.py          # 实盘交易配置
+config/api_config.py           # API专用配置
+config/secret_config.py        # 密钥配置文件
+
+# 保留安全的配置文件和模板
+!config/__init__.py            # 保留包初始化文件
+!config/config.py              # 主配置文件（不含真实API密钥）
+!config/config_example.py      # 保留配置模板文件
+!config/config_template.py     # 保留配置模板
+!config/config_templates.py    # 保留配置模板集合
+!config/long_term_config.py    # 保留长期策略配置（不含密钥）
+!config/short_term_config.py   # 保留短期策略配置（不含密钥）
+!config/risk_config.py         # 保留风险管理配置
+!config/dmr_config.py          # 保留DMR策略配置
+!config/*_config.py.example    # 保留所有示例配置文件
+!config/templates/             # 保留配置模板目录
+
+# ============================================================================
+# 环境变量和密钥文件
+# 说明：各种格式的环境变量文件和密钥文件
+# 必要性：这些文件通常包含敏感信息，不应纳入版本控制
+# ============================================================================
+secrets.json                   # JSON格式密钥文件
+secrets.json.bak              # 密钥文件备份
+*.bak                         # 所有备份文件
+.env*                         # 环境变量文件
+!.env.example                 # 保留环境变量示例文件
+!.env.template                # 保留环境变量模板
+
+# ============================================================================
+# API密钥和证书文件 - 通配符安全防护
+# 说明：使用通配符模式捕获所有可能的敏感文件
+# 必要性：多层安全防护，防止遗漏任何敏感文件
+# ============================================================================
+*api_key*                     # 包含api_key的所有文件
+*secret*                      # 包含secret的所有文件
+*password*                    # 包含password的所有文件
+*token*                       # 包含token的所有文件
+*credential*                  # 包含credential的所有文件
+*.pem                         # PEM格式证书文件
+*.key                         # 密钥文件
+*.crt                         # 证书文件
+*.p12                         # PKCS#12证书文件
+*.pfx                         # PFX证书文件
+
+# ============================================================================
+# 交易数据和缓存 - 交易系统特有
+# 说明：交易系统运行时产生的业务数据和缓存
+# 必要性：这些是运营数据而非源码，且可能包含敏感的交易信息
+# 交易系统特有：包含持仓、订单、交易历史等核心业务数据
+# ============================================================================
+cache/                        # 通用缓存目录
+temp/                         # 临时文件目录
+tmp/                          # 临时目录
+backups/                      # 备份目录
+snapshots/                    # 快照目录
+.cache/                       # 隐藏缓存目录
+
+# ============================================================================
+# 测试和代码覆盖率
+# 说明：测试框架和代码覆盖率工具产生的文件
+# 必要性：这些是测试运行的结果文件，不是源码的一部分
+# ============================================================================
+.coverage                     # coverage.py覆盖率数据
+.pytest_cache/                # pytest缓存目录
+.tox/                         # tox测试环境
+.nox/                         # nox测试环境
+htmlcov/                      # HTML覆盖率报告
+.coverage.*                   # 覆盖率数据文件
+coverage.xml                  # XML格式覆盖率报告
+*.cover                       # 覆盖率文件
+.hypothesis/                  # Hypothesis测试数据
+
+# ============================================================================
+# 系统文件
+# 说明：操作系统自动生成的文件
+# 必要性：这些文件是系统级的，不属于项目代码
+# ============================================================================
+.DS_Store                     # macOS目录显示属性
+.DS_Store?                    # macOS目录显示属性变体
+._*                           # macOS资源分支文件
+.Spotlight-V100               # macOS Spotlight索引
+.Trashes                      # macOS回收站
+ehthumbs.db                   # Windows缩略图缓存
+Thumbs.db                     # Windows缩略图数据库
+
+# ============================================================================
+# 交易系统核心业务数据 - 项目特有配置
+# 说明：量化交易系统特有的业务数据文件和目录
+# 必要性：这些包含实际的交易数据和策略执行结果，属于运营数据
+# 交易系统特有：DMR四象限策略的核心业务数据
+# ============================================================================
+positions/                    # 持仓数据目录
+orders/                       # 订单数据目录
+trade_history/                # 交易历史目录
+market_data/                  # 市场数据缓存目录
+execution_logs/               # 订单执行日志
+monitoring_data/              # 监控数据目录
+risk_data/                    # 风险数据目录
+strategy_data/                # 策略数据目录
+
+# 交易系统特有文件扩展名
+*.trade                       # 交易记录文件
+*.position                    # 持仓记录文件
+*.order                       # 订单记录文件
+*.signal                      # 交易信号文件
+*.indicator                   # 技术指标文件
+
+# ============================================================================
+# 数据库文件
+# 说明：各种数据库文件
+# 必要性：数据库文件通常很大且包含运行时数据
+# ============================================================================
+*.db                          # 通用数据库文件
+*.sqlite                      # SQLite数据库文件
+*.sqlite3                     # SQLite3数据库文件
+
+# ============================================================================
+# 压缩和归档文件
+# 说明：各种压缩格式的文件
+# 必要性：通常是临时打包文件或备份文件
+# ============================================================================
+*.zip                         # ZIP压缩文件
+*.tar.gz                      # TAR.GZ压缩文件
+*.rar                         # RAR压缩文件
+*.7z                          # 7-Zip压缩文件
+
+# ============================================================================
+# 临时文件和备份
+# 说明：各种临时文件和备份文件
+# 必要性：这些是临时产生的文件，不需要版本控制
+# ============================================================================
+*.tmp                         # 临时文件
+*.temp                        # 临时文件
+*~                            # 编辑器备份文件
+*.backup                      # 备份文件
+*.old                         # 旧文件
+*_backup                      # 备份文件（下划线格式）
+*_old                         # 旧文件（下划线格式）
+
+# ============================================================================
+# 机器学习和数据科学文件 - 扩展配置
+# 说明：机器学习模型和数据科学相关文件
+# 必要性：模型文件通常很大，且是训练结果而非源码
+# 交易系统相关：可能用于策略优化和预测模型
+# ============================================================================
+*.model                       # 通用模型文件
+*.pkl                         # Pickle序列化文件
+*.pickle                      # Pickle序列化文件
+*.joblib                      # Joblib序列化文件
+*.h5                          # HDF5格式文件
+*.hdf5                        # HDF5格式文件
+*.onnx                        # ONNX模型文件
+*.parquet                     # Parquet数据文件
+*.feather                     # Feather数据文件
+
+# ============================================================================
+# 网络和系统特定文件
+# 说明：网络文件系统和特定系统产生的文件
+# 必要性：这些是系统级文件，不属于项目代码
+# ============================================================================
+.fuse_hidden*                 # FUSE隐藏文件
+.nfs*                         # NFS临时文件
+
+# ============================================================================
+# 文件结束标记
+# 配置文件版本：2.0
+# 最后更新：2024年
+# 适用项目：Python量化交易系统 - DMR四象限策略
+# ============================================================================
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.conda/
+conda-meta/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Log files
+logs/
+*.log
+trading_log.txt
+testnet_trading_log.txt
+short_term_strategy.log
+long_term_strategy.log
+*.log.*
+
+# Data files but keep structure
+data/*.csv
+data/*.json
+data/*.xlsx
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+data/long_term/*.csv
+data/long_term/*.json
+data/short_term/*.csv
+data/short_term/*.json
+!data/*.py
+!data/*/*.py
+!data/README.md
+!data/*/README.md
+
+# Analysis reports
+analysis_reports/
+*.csv
+*.xlsx
+*.json
+!requirements.txt
+!README*.txt
+!README*.md
+
+# 敏感配置文件 - 只排除包含真实API密钥的文件
+
+config/config_1.py
+config/config_copy.py
+config/testnet_config.py
+config/production_config.py
+config/local_config.py
+config/personal_config.py
+config/live_config.py
+# 允许所有其他config文件
+!config/config.py
+!config/__init__.py
+!config/config_example.py
+!config/config_template.py
+!config/config_templates.py
+!config/long_term_config.py
+!config/short_term_config.py
+!config/risk_config.py
+!config/*_config.py.example
+!config/templates/
+
+# 环境变量和密钥文件
+secrets.json
+secrets.json.bak
+*.bak
+.env*
+!.env.example
+!.env.template
+
+# API密钥和敏感信息
+*api_key*
+*secret*
+*password*
+*token*
+*credential*
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# 交易数据和缓存
+cache/
+temp/
+tmp/
+backups/
+snapshots/
+.cache/
+
+# 测试和覆盖率
+.coverage
+.pytest_cache/
+.tox/
+.nox/
+htmlcov/
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+
+# 系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 交易系统特有文件
+positions/
+orders/
+trade_history/
+market_data/
+*.trade
+*.position
+*.order
+performance_reports/
+risk_reports/
+execution_logs/
+monitoring_data/
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# 压缩文件
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# 临时文件
+*.tmp
+*.temp
+*~
